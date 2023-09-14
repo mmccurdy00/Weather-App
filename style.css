@@ -1,0 +1,45 @@
+html {
+  height: 100%;
+}
+body {
+  text-align: center;
+  font-family: "Bitter", serif;
+  color: #272343;
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+h1 {
+  padding: 25px;
+  font-size: 50px;
+  font-style: italic;
+}
+h2 {
+  padding: 20px;
+}
+.main {
+  padding: 45px;
+  font-size: medium;
+}
+.city {
+  transition: 150ms ease-in-out;
+  padding: 10px;
+}
+.city:hover {
+  color: #e3f6f5;
+}
+.search-bar {
+  max-width: 40%;
+  margin: 0 auto;
+  padding: 20px;
+}
+a:hover {
+  color: #e3f6f5;
+}
+a {
+  text-decoration: none;
+  color: #272343;
+  transition: 150ms ease-in-out;
+}
