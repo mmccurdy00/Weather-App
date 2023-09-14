@@ -26,7 +26,7 @@ function search(event) {
   return searchInput.value;
 }
 let form = document.querySelector("form");
-form.addEventListener("submit", search);
+form.addEventListener("submit", myFunction);
 
 function degreesF(event) {
   let newOne = document.querySelector("#temperature");
@@ -42,15 +42,18 @@ function degreesC(event) {
 let cel = document.querySelector("#c");
 cel.addEventListener("click", degreesC);
 
-function myFunction() {
+function myFunction(event) {
+  event.preventDefault();
   let x = document.querySelector("#search").value;
   function displayWeather(response) {
     let weather = document.querySelector("#temperature");
     let temperature = Math.round(response.data.main.temp);
     let description = response.data.weather[0].description;
     weather.innerHTML = `${temperature}°C <br /> ${description}`;
+    let h1 = document.querySelector("h1");
+    h1.innerHTML = `~${response.data.name}~`;
   }
-  let searchInput = document.querySelector("#search").input;
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${x}&appid=cb286bad3607984b41ed10c8de5cf00e&units=metric`;
+  let searchInput = document.querySelector("#search-input").value;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=197ef3a642b76eef90e131866f74a0a0&units=metric`;
   axios.get(url).then(displayWeather);
 }
