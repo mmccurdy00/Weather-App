@@ -20,36 +20,42 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <form>
+    <form id="form">
       <label for="Search">What's the weather in...</label>
-      <input id="search-input" type="text" placeholder="Search" />
+      <input
+        id="search-input"
+        type="search"
+        placeholder="Search"
+        autocomplete="off"
+      />
       <input id="search" type="submit" />
     </form>
     <h2>The Weather In</h2>
-    <h1>~Austin~</h1>
+    <h1 id="city"></h1>
     <div class="container text-center main">
+      <img src="" alt="Clear" id="icon" />
       <div class="row align-items-start">
         <div class="col">
-          <h4 id="current-day">Thursday</h4>
-          <h4 id="current-time">7:00pm</h4>
+          <h4>Last Updated:<span id="date"></span></h4>
+          <h4 id="description"></h4>
         </div>
         <div class="col">
-          <h2 id="temperature">101°</h2>
-          <h2>
-            <span class="degrees"> <a href="#" id="f">F</a></span
-            >|<span class="degrees"><a href="#" id="c">C</a></span>
-          </h2>
+          <strong id="temperature"></strong
+          ><span class="units"
+            ><a href="#" id="celsius-link" class="active">°C</a> |
+            <a href="#" id="fahrenheit-link">°F</a></span
+          >
         </div>
         <div class="col">
           <h4>
             Humidity: 28%
             <br />
-            Precipitation: 1%
+            Feels Like: 22°
           </h4>
         </div>
       </div>
     </div>
-    <a href="https://github.com/mmccurdy00/week-6-challenge"
+    <a href="https://github.com/mmccurdy00/Weather-App" target="_blank"
       >GitHub Repository</a
     >
     <script src="app.js"></script>
