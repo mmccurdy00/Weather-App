@@ -8,7 +8,6 @@ function formatDate(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-
   let days = [
     "Sunday",
     "Monday",
@@ -23,17 +22,20 @@ function formatDate(timestamp) {
 }
 
 function displayTemperature(response) {
-  let temperatureElement = document.querySelector("#temperature");
+  let temperatureElement = document.querySelector("#current-temp");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  let celsiusTemperature = response.data.temperature.current;
+  celsiusTemp = response.data.temperature.current;
 
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
   cityElement.innerHTML = response.data.city;
   descriptionElement.innerHTML = response.data.condition.description;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute(
     "src",
@@ -43,10 +45,10 @@ function displayTemperature(response) {
 }
 
 function search(city) {
-  let apiKey = "a0f3f839feb6c8a05faec943ed4tb06o";
+  let apiKey = "a6946fa02tb383o83fefbda1f7e7863a";
   let units = "metric";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(displayTemperature);
+  let currentApiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
+  axios.get(currentApiUrl).then(displayTemperature);
 }
 
 function handleSubmit(event) {
@@ -55,33 +57,32 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-function displayFahrenheitTemperature(event) {
+function displayFahrenheitTemp(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-
+  let temperatureElement = document.querySelector("#current-temp");
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-  let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
-function displayCelsiusTemperature(event) {
+function displayCelsiusTemp(event) {
   event.preventDefault();
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  let temperatureElement = document.querySelector("#current-temp");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
 }
 
-let celsiusTemperature = null;
+let celsiusTemp = null;
 
-let form = document.querySelector("#form");
+let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
+celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 search("Tokyo");

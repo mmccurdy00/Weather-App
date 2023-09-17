@@ -20,10 +20,10 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <form id="form">
+    <form id="search-form">
       <label for="Search">What's the weather in...</label>
       <input
-        id="search-input"
+        id="city-input"
         type="search"
         placeholder="Search"
         autocomplete="off"
@@ -36,21 +36,24 @@
       <img src="" alt="Clear" id="icon" />
       <div class="row align-items-start">
         <div class="col">
-          <h4>Last Updated:<span id="date"></span></h4>
-          <h4 id="description"></h4>
+          <h4>Last Updated: <span id="date"></span></h4>
+          <h4>Description: <span id="description"></span></h4>
         </div>
         <div class="col">
-          <strong id="temperature"></strong
-          ><span class="units"
-            ><a href="#" id="celsius-link" class="active">°C</a> |
-            <a href="#" id="fahrenheit-link">°F</a></span
-          >
+          <h3>
+            <span id="current-temp"></span>
+            <span class="units">
+              <a href="#" id="celsius-link" class="active">°C</a>
+              <span class="divider">|</span>
+              <a href="#" id="fahrenheit-link">°F</a>
+            </span>
+          </h3>
         </div>
         <div class="col">
           <h4>
             Humidity: 28%
             <br />
-            Feels Like: 22°
+            Wind: <span id="wind"></span> km/hr
           </h4>
         </div>
       </div>
