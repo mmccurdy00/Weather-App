@@ -27,19 +27,12 @@ h2 {
   transition: 150ms ease-in-out;
   padding: 10px;
 }
-.city:hover {
-  color: #e3f6f5;
-}
 .search-bar {
   max-width: 40%;
   margin: 0 auto;
   padding: 20px;
 }
-a:hover {
-  color: #e3f6f5;
-}
 a {
   text-decoration: none;
   color: #272343;
-  transition: 150ms ease-in-out;
 }
