@@ -33,7 +33,7 @@ function displayTemperature(response) {
   celsiusTemp = response.data.temperature.current;
 
   temperatureElement.innerHTML = Math.round(celsiusTemp);
-  cityElement.innerHTML = response.data.city;
+  cityElement.innerHTML = `~${response.data.city}~`;
   descriptionElement.innerHTML = response.data.condition.description;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.time * 1000);
